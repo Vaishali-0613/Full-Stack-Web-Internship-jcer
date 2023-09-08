@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Seat Booking</title>
+    <link rel="stylesheet" href="seatstyle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>MOVIE SEAT RESERVATION</h2>
+
+    <div class="movie-container">
+        <center>
+            <form method="post" name="sample"> 
+                Name *: <input type="text" id="name" required>
+                Number of Seats *: <input type="number" id="numSeats" required>
+                <br><br>
+                <label>Select a movie:</label>
+                <select id ="movie">
+                    <option value ="OMG 2">OMG 2(RS.220)</option>
+                    <option value ="DREAMGIRL 2">DREAMGIRL 2(RS.320)</option>
+                    <option value ="PROOF">PROOF(RS.650)</option>
+                    <option value ="BARBIE">BARBIE(RS.260)</option>
+                    <option value ="LOVE YOURSELF">LOVE YOURSELF(RS.720)</option>
+                    <option value ="BUTTERFLY">BUTTERFLY(RS.590)</option>
+                    <option value ="TRAIN TO BUSAN">TRAIN TO BUSAN(RS.475)</option>
+                </select>
+            </form>    
+        </center>
+    </div>
+    
+    <button id="selectbtn" onclick="myFunction()">Start Selection</button>
+    <p id="demo"></p>
+    <div id="myDIV">
+        <ul class="showcase">
+        <li>
+            <div class="seat"></div>
+            <small>Available</small>
+        </li>
+        <li>
+            <div class="seat selected"></div>
+                <small>Selected</small>
+        </li>
+        <li>
+            <div class="seat sold"></div>
+            <small>Sold</small>
+        </li>
+    </ul>
+
+    <div class="container">
+        <div class="screen"></div>
+            <div class="row">
+                <div class="seat">A1</div>  
+                <div class="seat">A2</div>
+                <div class="seat">A3</div>
+                <div class="seat">A4</div>
+                <div class="seat">A5</div>  
+                <div class="seat">A6</div>
+                <div class="seat">A7</div>
+                <div class="seat sold">A8</div>
+                <div class="seat sold">A9</div>
+                <div class="seat">A10</div>
+                <div class="seat">A11</div>
+                <div class="seat">A12</div>
+            </div>
+        
+            <div class="row">
+                <div class="seat">B1</div>  
+                <div class="seat">B2</div>
+                <div class="seat">B3</div>
+                <div class="seat sold">B4</div>
+                <div class="seat sold">B5</div>
+                <div class="seat">B6</div>
+                <div class="seat">B7</div>
+                <div class="seat">B8</div>
+                <div class="seat">B9</div>
+                <div class="seat">B10</div>
+                <div class="seat">B11</div>
+                <div class="seat">A12</div>
+            </div>
+        
+            <div class="row">
+                <div class="seat">C1</div>  
+                <div class="seat sold">C2</div>
+                <div class="seat sold">C3</div>
+                <div class="seat">C4</div>
+                <div class="seat">C5</div>
+                <div class="seat">C6</div>
+                <div class="seat">C7</div>
+                <div class="seat">C8</div>
+                <div class="seat">C9</div>
+                <div class="seat sold">C10</div>
+                <div class="seat sold">C11</div>
+                <div class="seat sold">C12</div>
+            </div>
+        
+            <div class="row">
+                <div class="seat">D1</div>  
+                <div class="seat">D2</div>
+                <div class="seat">D3</div>
+                <div class="seat">D4</div>
+                <div class="seat">D5</div>
+                <div class="seat sold">D6</div>
+                <div class="seat">D7</div>
+                <div class="seat">D8</div>
+                <div class="seat">D9</div>
+                <div class="seat">D10</div>
+                <div class="seat">D11</div>
+                <div class="seat">D12</div>
+            </div>
+        
+            <div class="row">
+                <div class="seat">E1</div>  
+                <div class="seat">E2</div>
+                <div class="seat">E3</div>
+                <div class="seat">E4</div>
+                <div class="seat">E5</div>
+                <div class="seat">E6</div>
+                <div class="seat">E7</div>
+                <div class="seat sold">E8</div>
+                <div class="seat sold">E9</div>
+                <div class="seat">E10</div>
+                <div class="seat">E11</div>
+                <div class="seat">E12</div>
+            </div>
+        
+            <div class="row">
+                <div class="seat">F1</div>  
+                <div class="seat sold">F2</div>
+                <div class="seat sold">F3</div>
+                <div class="seat">F4</div>
+                <div class="seat">F5</div>
+                <div class="seat">F6</div>
+                <div class="seat">F7</div>
+                <div class="seat">F8</div>
+                <div class="seat">F9</div>
+                <div class="seat">F10</div>
+                <div class="seat">F11</div>
+                <div class="seat">F12</div>
+            </div>
+        
+            <div class="row">
+                <div class="seat">G1</div>  
+                <div class="seat">G2</div>
+                <div class="seat">G3</div>
+                <div class="seat">G4</div>
+                <div class="seat sold">G5</div>
+                <div class="seat sold">G6</div>
+                <div class="seat">G7</div>
+                <div class="seat">G8</div>
+                <div class="seat">G9</div>
+                <div class="seat">G10</div>
+                <div class="seat">G11</div>
+                <div class="seat">G12</div>
+            </div>
+    </div>
+     <CENTER><form method="post" name="demo"> 
+        <input type="button" id="addseat" name="add" value="Add Reservation" onclick="addReservation()">
+    </form> </CENTER> <br><br>
+    
+    <input type="text" id="myInput" onkeyup="searchFunc()" placeholder="Search for names..." title="Type in a name">
+
+        <div class="displayBoxes">
+            <center>
+                <table id="myTable" class="displayTable">
+                    <thead>
+                        <th>Name</th>                        
+                        <th>Movie Name</th>
+                        <th>Seats</th>
+                        <th>Number Of Seats</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Neha</td>                            
+                            <td>DREAMGIRL 2</td>
+                            <td>C10,C11,C12</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Pankaj</td>    
+                            <td>OMG 2</td>
+                            <td>E8,E9</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Tanu</td>                            
+                            <td>PROOF</td>
+                            <td>B4,B5</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Smita</td>                           
+                            <td>BARBIE</td>
+                            <td>A8,A9</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Srushti</td>                           
+                            <td>DREAMGIRL 2</td>
+                            <td>F2,F3</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Suhee</td>                            
+                            <td>TRAIN TO BUSAN</td>
+                            <td>C2,C3</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Seulbi</td>                            
+                            <td>BUTTERFLY</td>
+                            <td>D6</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </center>
+        </div>
+
+</div>
+
+<script src="script.js"></script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+
+            selectElement = document.querySelector("#movie");
+            output = selectElement.value;
+            document.querySelector('.output').textContent = output;
+        }
+
+        function addReservation() {
+            const selected = document.querySelectorAll('.row .seat.selected');
+            const name = document.getElementById('name').value;
+            const movieSelect = document.getElementById('movie');
+            const selectedMovie = movieSelect.options[movieSelect.selectedIndex].text;
+            const noSeats = document.getElementById('numSeats').value;
+
+            if (selected.length > 0 && name.trim() !== '') {
+                selected.forEach(seat => seat.classList.add('sold'));
+
+                const bookingTable = document.getElementById("myTable");
+                const newRow = bookingTable.insertRow(-1);
+                const nameCell = newRow.insertCell(0);
+                const movieCell = newRow.insertCell(1);
+                const seatsCell = newRow.insertCell(2);
+                const nocell = newRow.insertCell(3);
+
+                
+                nameCell.innerHTML = name;
+                movieCell.innerHTML = selectedMovie;
+                seatsCell.innerHTML = Array.from(selected).map(seat => seat.textContent).join(', ');
+                nocell.innerHTML = noSeats;
+
+                selected.forEach(seat => seat.classList.remove('selected'));
+                document.getElementById('name').value = '';
+            }
+        }
+        
+        function searchFunc() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }       
+            }
+        }
+
+        $(document).ready(function () {
+            const seatSelected = []; 
+            $(".seat").click(function () {
+            const seatNumber = $(this).text();
+            if (seatSelected.includes(seatNumber)) {
+                seatSelected.splice(seatSelected.indexOf(seatNumber), 1);
+                $(this).removeClass("selected");
+            } else {
+                seatSelected.push(seatNumber);
+                $(this).addClass("selected");
+            }
+            });
+            $("#addseat").click(function () {
+                console.log("Selected Seats:", seatSelected);
+            });
+        });
+
+    </script>    
+</body>
+</html>
